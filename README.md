@@ -1,6 +1,6 @@
 # Smart Git Commit
 
-A command-line tool that uses OpenAI's GPT-3.5 to automatically generate meaningful git commit messages based on your changes.
+A command-line tool that uses OpenAI's GPT-3.5 to automatically generate meaningful git commit messages based on your changes. [Learn more](https://www.jamesfarrell.me/blog/autogen-git-commit-messages#go-implementation)
 
 ## Features
 
@@ -24,7 +24,27 @@ A command-line tool that uses OpenAI's GPT-3.5 to automatically generate meaning
 export OPENAI_API_KEY='your-api-key-here'
 ```
 
-## Usage
+**For the Go version (recommended)**
+Build the binary:
+
+```bash
+go build -o smart-commit
+```
+
+Move to your bin directory:
+
+```bash
+mv smart-commit ~/bin/
+```
+
+Set your OpenAI API key (add to your shell config for persistence):
+echo 'export OPENAI_API_KEY="your-key-here"' >> ~/.zshrc
+
+```bash
+source ~/.zshrc
+```
+
+## Usage of bash version:
 ```bash
 bash
 ./bin/smart-commit.zsh
