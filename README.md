@@ -54,12 +54,14 @@ source ~/.zshrc
 ```bash
 
 mv smart-commit ~/bin/
+echo 'alias sc="smart-commit"' >> ~/.zshrc
+source ~/.zshrc
+sc
 ```
 
 
 ## Usage of bash version:
 ```bash
-bash
 ./bin/smart-commit.zsh
 ```
 
