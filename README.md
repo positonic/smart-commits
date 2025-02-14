@@ -3,7 +3,8 @@
 A command-line tool that uses OpenAI's GPT-3.5 to automatically generate meaningful git commit messages based on your changes. [Learn more](https://www.jamesfarrell.me/blog/autogen-git-commit-messages#go-implementation)
 
 Demonstrated with `sc` alias (`echo 'alias sc="smart-commit"' >> ~/.zshrc`)
-<img width="936" alt="image" src="https://github.com/user-attachments/assets/e3f7537c-9bff-409c-a6bf-cf4485103dc4" />
+<img width="560" alt="image" src="https://github.com/user-attachments/assets/98db0e80-10f7-4ca2-88cd-6c97fbb32de4" />
+
 
 ## Features
 
