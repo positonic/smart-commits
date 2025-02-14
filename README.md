@@ -50,6 +50,12 @@ echo 'export OPENAI_API_KEY="your-key-here"' >> ~/.zshrc
 ```bash
 source ~/.zshrc
 ```
+## Usage of Go version:
+```bash
+
+mv smart-commit ~/bin/
+```
+
 
 ## Usage of bash version:
 ```bash
