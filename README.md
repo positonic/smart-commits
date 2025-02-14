@@ -14,6 +14,10 @@ Demonstrated with `sc` alias (`echo 'alias sc="smart-commit"' >> ~/.zshrc`)
 
 ## Prerequisites
 
+Golang version:
+- none
+
+Bash version:
 - Zsh shell
 - Git
 - `jq` command-line JSON processor
