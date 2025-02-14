@@ -50,7 +50,14 @@ func main() {
         Messages: []Message{
             {
                 Role:    "system",
-                Content: "You are a helpful git commit message writer. Given a git diff, write a concise, conventional commit message. Return ONLY the commit message, no explanation or markdown.",
+                Content: "You are a helpful git commit message writer. Given a git diff, write a conventional commit message in this format:\n\n" +
+                    "<type>: <subject>\n\n" +
+                    "<detailed description>\n\n" +
+                    "Rules:\n" +
+                    "- First line (subject) must be 50 characters or less\n" +
+                    "- Use conventional commit types (feat, fix, docs, style, refactor, test, chore)\n" +
+                    "- Add a blank line between subject and description\n" +
+                    "- Description should explain what and why, not how",
             },
             {
                 Role:    "user",
