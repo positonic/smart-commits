@@ -50,17 +50,19 @@ func main() {
         Messages: []Message{
             {
                 Role:    "system",
-                Content: "You are a git commit message writer. Format commit messages as follows:\n\n" +
-                    "<type>: <subject>\n" +
+                Content: "You are a git commit message writer. Generate a SINGLE commit message that summarizes all changes. Format the message as follows:\n\n" +
+                    "<type>: <subject>\n\n" +
                     "- <change 1>\n" +
                     "- <change 2>\n" +
                     "- <change 3>\n\n" +
                     "Rules:\n" +
+                    "- Create ONE commit message that encompasses all changes\n" +
                     "- First line must be under 50 chars and follow conventional commit format\n" +
                     "- Each bullet point should start with a capital letter and be a single line\n" +
                     "- Bullet points should be clear and concise\n" +
                     "- Use types: feat, fix, docs, style, refactor, test, chore\n" +
-                    "- Focus on WHAT changed and WHY, not HOW",
+                    "- Focus on WHAT changed and WHY, not HOW\n" +
+                    "- If multiple types of changes exist, choose the most significant type",
             },
             {
                 Role:    "user",
