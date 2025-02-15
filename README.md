@@ -1,10 +1,6 @@
 # Smart Git Commit
 
-A command-line tool that uses OpenAI's GPT-3.5 to automatically generate meaningful git commit messages based on your changes. [Learn more](https://www.jamesfarrell.me/blog/autogen-git-commit-messages#go-implementation)
-
-Demonstrated with `sc` alias (`echo 'alias sc="smart-commit"' >> ~/.zshrc`)
-<img width="560" alt="image" src="https://github.com/user-attachments/assets/98db0e80-10f7-4ca2-88cd-6c97fbb32de4" />
-
+A command-line tool that uses OpenAI's GPT-3.5 to automatically generate meaningful git commit messages based on your changes.
 
 ## Features
 
@@ -13,58 +9,43 @@ Demonstrated with `sc` alias (`echo 'alias sc="smart-commit"' >> ~/.zshrc`)
 - Interactive confirmation before committing
 - Automatically stages all changes upon confirmation
 
-## Prerequisites
-
-Golang version:
-- none
-
-Bash version:
-- Zsh shell
-- Git
-- `jq` command-line JSON processor
-- OpenAI API key
-
 ## Installation
 
 1. Clone this repository
-2. Set your OpenAI API key as an environment variable:
+2. Build this binary: `go build -o smart-commit`
+3. Move the binary to your path: `mv smart-commit ~/bin/`
+4. Set your OpenAI API key as an environment variable:
 ```bash
 export OPENAI_API_KEY='your-api-key-here'
 ```
 
-**For the Go version (recommended)**
-Build the binary:
-
+To persist your API key, you can add it to your `.zshrc` file:
 ```bash
-go build -o smart-commit
+echo "export OPENAI_API_KEY='your-api-key-here'" >> ~/.zshrc
 ```
 
-Move to your bin directory:
-
+## Usage
+Navigate to your git project:
 ```bash
-mv smart-commit ~/bin/
+cd your-project
 ```
 
-Set your OpenAI API key (add to your shell config for persistence):
-echo 'export OPENAI_API_KEY="your-key-here"' >> ~/.zshrc
+Make some changes to your files
+
+Run the tool:
 
 ```bash
-source ~/.zshrc
+smart-commit  # Go version
 ```
-## Usage of Go version:
-```bash
 
-mv smart-commit ~/bin/
+I use an alias in my zsh config to make it easier to run:
+
+```bash
 echo 'alias sc="smart-commit"' >> ~/.zshrc
 source ~/.zshrc
-sc
 ```
 
-
-## Usage of bash version:
-```bash
-./bin/smart-commit.zsh
-```
+and run it with `sc`
 
 
 The script will:
@@ -77,12 +58,8 @@ The script will:
 
 ## Current Limitations
 
-- Currently only generates the commit subject line (no detailed body or footer)
-- Uses GPT-3.5-turbo model (may incur API costs)
 - Requires all changes to be committed together (no partial commits)
-- No configuration options for commit message style or conventions
 - Requires manual API key setup
-- No handling of large diffs that might exceed API token limits
 
 ## Contributing
 
