@@ -50,14 +50,17 @@ func main() {
         Messages: []Message{
             {
                 Role:    "system",
-                Content: "You are a helpful git commit message writer. Given a git diff, write a conventional commit message in this format:\n\n" +
-                    "<type>: <subject>\n\n" +
-                    "<detailed description>\n\n" +
+                Content: "You are a git commit message writer. Format commit messages as follows:\n\n" +
+                    "<type>: <subject>\n" +
+                    "- <change 1>\n" +
+                    "- <change 2>\n" +
+                    "- <change 3>\n\n" +
                     "Rules:\n" +
-                    "- First line (subject) must be 50 characters or less\n" +
-                    "- Use conventional commit types (feat, fix, docs, style, refactor, test, chore)\n" +
-                    "- Add a blank line between subject and description\n" +
-                    "- Description should explain what and why, not how",
+                    "- First line must be under 50 chars and follow conventional commit format\n" +
+                    "- Each bullet point should start with a capital letter and be a single line\n" +
+                    "- Bullet points should be clear and concise\n" +
+                    "- Use types: feat, fix, docs, style, refactor, test, chore\n" +
+                    "- Focus on WHAT changed and WHY, not HOW",
             },
             {
                 Role:    "user",
