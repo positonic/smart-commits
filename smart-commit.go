@@ -27,6 +27,9 @@ type OpenAIResponse struct {
     } `json:"choices"`
 }
 
+// Maximum size for diff in bytes (approximately 12K tokens)
+const maxDiffSize = 48000
+
 func main() {
     // Check for OpenAI API key
     apiKey := os.Getenv("OPENAI_API_KEY")
@@ -96,6 +99,29 @@ func getGitDiff() string {
     if diff == "" {
         diff = execCommand("git", "diff", "--cached")
     }
+
+    if len(diff) > maxDiffSize {
+        // Get summary information
+        filesSummary := execCommand("git", "diff", "--stat")
+        if filesSummary == "" {
+            filesSummary = execCommand("git", "diff", "--cached", "--stat")
+        }
+
+        // Get truncated diff with --unified=1 for more concise output
+        truncatedDiff := execCommand("git", "diff", "--unified=1")
+        if truncatedDiff == "" {
+            truncatedDiff = execCommand("git", "diff", "--cached", "--unified=1")
+        }
+
+        // If still too large, take the first portion
+        if len(truncatedDiff) > maxDiffSize {
+            truncatedDiff = truncatedDiff[:maxDiffSize]
+        }
+
+        return fmt.Sprintf("Summary of changes:\n%s\n\nPartial diff (truncated due to size):\n%s",
+            filesSummary, truncatedDiff)
+    }
+
     return diff
 }
 
